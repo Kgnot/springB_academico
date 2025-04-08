@@ -1,0 +1,20 @@
+jwt:
+  secret_key: ${jwt_secret_key}
+  expiration: ${jwt_expiration}
+  refresh-token:
+    expiration: ${jwt_refresh-token_expiration}
+
+spring:
+  ## Apartado de aplicación
+  application:
+    name: Invoice's Application
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: ${database_url}
+    username: ${database_username}
+    password: ${database_password}
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true

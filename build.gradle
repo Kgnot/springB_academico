@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+//	id 'org.graalvm.buildtools.native' version '0.10.5'
+}
+
+group = 'com.frenos_el_control'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+repositories {
+	mavenCentral()
+	maven { url = 'https://jaspersoft.jfrog.io/artifactory/third-party-ce-artifacts/' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//	Apartado de SQL Server
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:12.2.0.jre11'
+	// Apartado de JasperReport
+	implementation 'net.sf.jasperreports:jasperreports:7.0.1'
+	implementation 'net.sf.jasperreports:jasperreports-pdf:7.0.1'
+	//	 Apartado de seguridad
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation 'org.springframework.security:spring-security-core:6.4.3'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+//	Apartado de documentacion con swagger:
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+}
